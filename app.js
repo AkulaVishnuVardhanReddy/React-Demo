@@ -35,19 +35,34 @@ const Header=()=>{
 
 const Body=()=>{
     return(
-        <div>
+        <div className='restaurent-cards'>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
+            <RestaurentCard/>
             <RestaurentCard/>
         </div>
     )
 }
 
+const Biryani={
+    name:"Chicken Biryani",
+    img:"https://ministryofcurry.com/wp-content/uploads/2023/10/paneer-biryani_-9.jpg",
+    cusines:["Chicken","Hydrabad"],
+    rating:"4.2"
+}
+
 const RestaurentCard=()=>{
     return(
         <div className='card'>
-            <img src="https://ministryofcurry.com/wp-content/uploads/2023/10/paneer-biryani_-9.jpg"/>\
-            <h2>Chicken Biryani</h2>
-            <h3>Spicy Tastey</h3>
-            <h4>4.2 star rating</h4>
+            <img src={Biryani.img}/>
+            <h2>{Biryani.name}</h2>
+            <h3>{Biryani.cusines.join(" , ")}</h3>
+            <h4>{Biryani.rating} stars</h4>
         </div>
     )
 }
