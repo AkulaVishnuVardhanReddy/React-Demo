@@ -33,14 +33,41 @@ const Header=()=>{
     );
 };
 
-const AppLayout=()=>{
+const Body=()=>{
     return(
         <div>
-            <Header/>
-            <Body/>
-            <Footer/>
+            <RestaurentCard/>
         </div>
     )
 }
 
-element.render(<Header/>);
+const RestaurentCard=()=>{
+    return(
+        <div className='card'>
+            <img src="https://ministryofcurry.com/wp-content/uploads/2023/10/paneer-biryani_-9.jpg"/>\
+            <h2>Chicken Biryani</h2>
+            <h3>Spicy Tastey</h3>
+            <h4>4.2 star rating</h4>
+        </div>
+    )
+}
+
+const Footer=()=>{
+    return(
+        <div>
+            Footer
+        </div>
+    )
+}
+
+const AppLayout=()=>{
+    return(
+        <>
+            <Header/>
+            <Body/>
+            <Footer/>
+        </>
+    )
+}
+
+element.render(<AppLayout/>);
