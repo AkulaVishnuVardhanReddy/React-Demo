@@ -24,7 +24,9 @@ const Body=()=>{
     async function getRestaurants() {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.6287557&lng=79.4191795&collection=80463&tags=layout_BAU_Contextual%2Cnoodles&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
         const json = await data.json();
-        json?.data?.cards.splice(0,3);
+        json?.data?.cards.shift();
+        json?.data?.cards.shift();
+        json?.data?.cards.shift();
         setAllRestaurent(json?.data?.cards);
         setRestaurent(json?.data?.cards);
     }
