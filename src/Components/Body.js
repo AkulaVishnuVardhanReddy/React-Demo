@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CDN_IMG_LINK,RestaurentList } from "../Config";
 
 function FilterBySearch(searchInput,restaurant){
@@ -6,9 +6,21 @@ function FilterBySearch(searchInput,restaurant){
     return RestaurentList.filter((restaurant)=>restaurant.card.card.info.name.includes(searchInput));
 }
 
+
+
+
 const Body=()=>{
     const[restaurant,setRestaurent]=useState(RestaurentList);
     const [searchInput,setSearchInput]=useState("");
+    useEffect(() => {
+        getRestaurants();
+    }, []);
+    
+    async function getRestaurants() {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.6287557&lng=79.4191795&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        console.log(json);
+    }
     return(
         <>
         <div className="search-container">
