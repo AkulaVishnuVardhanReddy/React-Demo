@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CDN_IMG_LINK } from "../Config";
 import Shimmer from "../Shimmer";
+import { Link } from "react-router-dom";
 
 
 function FilterBySearch(searchInput,restaurant){
@@ -64,7 +65,10 @@ const Body=()=>{
         <div className='restaurent-cards'>
         {
             restaurant.map(restaurant=>{
-                return(<RestaurentCard{...restaurant?.card?.card?.info} key={restaurant?.card?.card?.info?.id}/>);
+                return(<Link to={"/restaurant/"+restaurant?.card?.card?.info?.id}>
+                    <RestaurentCard{...restaurant?.card?.card?.info} 
+                    key={restaurant?.card?.card?.info?.id}/>
+                    </Link>);
             })
         }
         </div>
@@ -75,7 +79,9 @@ const Body=()=>{
 const RestaurentCard=(props)=>{
     return(
         <div className='card'>
+            
             <img src={CDN_IMG_LINK+props?.cloudinaryImageId}/>
+            
             <h2>{props?.name}</h2>
             <h3>{props.locality}</h3>
             <h4>{props?.avgRating} stars</h4>

@@ -62,3 +62,20 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.card-inside{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-inside>img{
+    height:140px;
+    width:150px;
+}
+
+.entire-card{
+    display: flex;
+    justify-content: center;
+}
