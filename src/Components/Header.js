@@ -3,28 +3,28 @@ import { Link } from "react-router-dom"
 
 export const Title=()=>{
     return(
-        <div className='header-left'>
-            <img className='img-logo'
+        <div className='flex'>
+            <img className='h-24'
             src={logo}/>
-            <h3>Food Villa</h3>
+            <h3 className="text-xl font-bold p-4 font-sans">Food Villa</h3>
         </div>
     )
 }
 
 export const LinksHeader=()=>{
     return(
-        <ul className='links-top'>
-            <Link to="/"> <li>Home</li> </Link>
-            <Link to="/about"> <li>About</li> </Link>
-            <Link to="/contact"> <li>Contact</li> </Link>
-            <li>Carts</li>
+        <ul className='flex p-3'>
+            <Link to="/" className="p-3"> <li>Home</li> </Link>
+            <Link to="/about" className="p-3"> <li>About</li> </Link>
+            <Link to="/contact" className="p-3"> <li>Contact</li> </Link>
+            <li className="p-3">Carts</li>
         </ul>
     )
 }
 
 const Header=()=>{
     return(
-        <div className='header-container'>
+        <div className='flex justify-between'>
             <Title />
             <LinksHeader />
         </div>

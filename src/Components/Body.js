@@ -40,10 +40,10 @@ const Body=()=>{
                 placeholder="Search" 
                 value={searchInput}
                 onChange={(e)=>setSearchInput(e.target.value)}
-                className="input-serch"/>
+                className="p-1 m-4 border-solid border-gray-500 border-2 rounded-lg"/>
 
 
-            <button type="button" className="search-button" 
+            <button type="button" className="bg-green-700 p-2 rounded-lg text-white" 
             onClick={()=>{
                 const data=FilterBySearch(searchInput,allrestaurant)
                 setRestaurent(data);
@@ -61,7 +61,7 @@ const Body=()=>{
 
         {found==="no" && <h1>Not Found..</h1>}
         
-        <div className='restaurent-cards'>
+        <div className='flex flex-wrap'>
         {
             restaurant.map(restaurant=>{
                 return(<Link to={"/restaurant/"+restaurant?.card?.card?.info?.id}>
@@ -77,11 +77,11 @@ const Body=()=>{
 
 const RestaurentCard=(props)=>{
     return(
-        <div className='card'>
+        <div className='border-solid border-2 border-black-500 m-5 p-3 w-52 rounded-lg'>
             
-            <img src={CDN_IMG_LINK+props?.cloudinaryImageId}/>
+            <img src={CDN_IMG_LINK+props?.cloudinaryImageId} className="h-32 w-36 rounded-lg"/>
             
-            <h2>{props?.name}</h2>
+            <h2 className="font-bold">{props?.name}</h2>
             <h3>{props.locality}</h3>
             <h4>{props?.avgRating} stars</h4>
         </div>
