@@ -2,21 +2,15 @@ import { useEffect, useState } from "react";
 import { CDN_IMG_LINK } from "../Config";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
-
-
-function FilterBySearch(searchInput,restaurant){
-    return restaurant.filter((restaurant)=>restaurant.card.card.info.name.toLowerCase().includes(searchInput.toLowerCase()));
-}
-
+import { FilterBySearch } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body=()=>{
-
 
     const[restaurant,setRestaurent]=useState([]);
     const[allrestaurant,setAllRestaurent]=useState([]);
     const [searchInput,setSearchInput]=useState("");
     const[found,setFound]=useState("yes");
-
 
     useEffect(() => {
         getRestaurants();
@@ -30,6 +24,11 @@ const Body=()=>{
         json?.data?.cards.shift();
         setAllRestaurent(json?.data?.cards);
         setRestaurent(json?.data?.cards);
+    }
+
+    const offline = useOnline();
+    if(offline){
+        return <h2>OOps you are offline!!</h2>
     }
 
     return allrestaurant.length===0? <Shimmer/>: (

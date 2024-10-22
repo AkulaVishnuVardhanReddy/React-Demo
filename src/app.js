@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from './Components/Header';
 import Body from './Components/Body';
 import Footer from './Components/Footer';
-import About from './Components/about';
 import Error from './Components/Error';
 import Contact from './Components/Contact';
 import RestaurantList from './Components/RestaurantList';
 import Profile from './Components/Profile';
 import { createBrowserRouter,Outlet,RouterProvider } from 'react-router-dom';
+import Shimmer from './Shimmer';
 
 
 const element=ReactDOM.createRoot(document.getElementById("element"));
+const About = lazy(()=>import('./Components/about'));
 
 const AppLayout=()=>{
     return(
@@ -35,7 +36,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:"/about",
-                element: <About/>, 
+                element: <Suspense fallback={<Shimmer/>}><About/></Suspense>, 
                 children:[
                     {
                         path:"profile",
